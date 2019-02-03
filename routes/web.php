@@ -9,6 +9,14 @@ Route::group(['prefix'=>'admin'], function(){
         'uses'  =>  'Admin\CategoryController@index',
         'as'    =>  'admin.categories'
     ]);
+    Route::get('categories/create', [
+        'uses'  =>  'Admin\CategoryController@create',
+        'as'    =>  'admin.get_create_category'
+    ]);
+    Route::post('categories/create', [
+        'uses'  =>  'Admin\CategoryController@store',
+        'as'    =>  'admin.post_create_category'
+    ]);
 });
 
 Auth::routes();

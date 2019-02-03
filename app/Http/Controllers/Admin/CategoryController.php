@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Model\Category;
+use Session;
 
 class CategoryController extends Controller
 {
@@ -14,7 +16,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.categories.index');
+        $categories = Category::all();
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -24,7 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -35,7 +38,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name'  =>  'required|min:4',
+            'status'    =>  'required'
+        ]);
+        $category = new Category;
+        $category->name = $request->name;
+        $category->status = $request->status;
+        $category->save();
+        Session::flash('msg','New Category Successfully Created');
+        return redirect()->route('admin.categories');
     }
 
     /**
