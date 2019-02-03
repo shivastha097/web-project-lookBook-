@@ -1,9 +1,9 @@
-@extends('layouts.admin.indes')
+@extends('layouts.admin.index')
 @section('content')    
     <section class="content-header">
       <h1>
         Category Page
-        <small>Optional description</small>
+        <small>Details about the Categories of room</small>
       </h1>
     </section>
 
