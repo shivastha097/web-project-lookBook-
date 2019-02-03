@@ -20,7 +20,7 @@
     
   <div class="row">
       <div class="col-xs-12">
-        <div class="box">
+        <div class="box" style="padding-left:20px">
           <div class="box-header">
             <h3 class="box-title">Hover Data Table</h3>
           </div>
@@ -48,7 +48,7 @@
                       <td>{{$category->status==1 ? 'Active' : 'Inactive'}}</td>
                       <td>
                         <a href="{{route('admin.get_edit_category', ['category'=>$category->id])}}" class="btn btn-primary">Edit</a>
-                        <a href="" class="btn btn-danger">Delete</a>
+                        <a href="{{route('admin.delete_category', ['category'=>$category->id])}}" class="btn btn-danger">Delete</a>
                       </td>
                     </tr>
                   @endforeach
@@ -62,6 +62,7 @@
           </div>
           <!-- /.box-body -->
         </div>
+        {{$categories->links()}}
         <!-- /.box -->
   </section>
 @endsection

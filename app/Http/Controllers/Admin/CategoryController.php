@@ -16,7 +16,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::paginate(4);
         return view('admin.categories.index', compact('categories'));
     }
 
@@ -102,6 +102,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+        $category->delete();
+        Session::flash('msg', 'Category Deleted Successfully');
+        return redirect()->route('admin.categories');
     }
 }

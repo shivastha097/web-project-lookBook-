@@ -25,6 +25,10 @@ Route::group(['prefix'=>'admin'], function(){
         'uses'  =>  'Admin\CategoryController@update',
         'as'    =>  'admin.post_edit_category'
     ]);
+    Route::get('categories/{category}', [
+        'uses'  =>  'Admin\CategoryController@destroy',
+        'as'    =>  'admin.delete_category'
+    ]);
 });
 
 Auth::routes();
