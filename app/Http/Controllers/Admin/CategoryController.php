@@ -69,7 +69,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -81,7 +82,16 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name'      =>  'required|min:4',
+            'status'    =>  'required'
+        ]);
+        $category = Category::find($id);
+        $category->name = $request->name;
+        $category->status = $request->status;
+        $category->save();
+        Session::flash('msg', 'Category Edited Successfully');
+        return redirect()->route('admin.categories');
     }
 
     /**

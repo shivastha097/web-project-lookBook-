@@ -47,7 +47,7 @@
                       <td>{{$category->name}}</td>
                       <td>{{$category->status==1 ? 'Active' : 'Inactive'}}</td>
                       <td>
-                        <a href="" class="btn btn-primary">Edit</a>
+                        <a href="{{route('admin.get_edit_category', ['category'=>$category->id])}}" class="btn btn-primary">Edit</a>
                         <a href="" class="btn btn-danger">Delete</a>
                       </td>
                     </tr>

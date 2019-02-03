@@ -17,6 +17,14 @@ Route::group(['prefix'=>'admin'], function(){
         'uses'  =>  'Admin\CategoryController@store',
         'as'    =>  'admin.post_create_category'
     ]);
+    Route::get('categories/edit/{category}', [
+        'uses'  =>  'Admin\CategoryController@edit',
+        'as'    =>  'admin.get_edit_category'
+    ]);
+    Route::post('categories/edit/{category}', [
+        'uses'  =>  'Admin\CategoryController@update',
+        'as'    =>  'admin.post_edit_category'
+    ]);
 });
 
 Auth::routes();

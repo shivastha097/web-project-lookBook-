@@ -10,7 +10,7 @@
     <section class="content container-fluid">
 
     <form action="{{route('admin.post_create_category')}}" method="POST">
-    @csrf
+        @csrf
         <div class="form-group">
             <label for="">Name</label>
             <input type="text" name="name" class="form-control" placeholder="Enter the category name">
