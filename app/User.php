@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Model\Role;
+use App\Model\Buyer;
 
 class User extends Authenticatable
 {
@@ -27,4 +29,17 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function role(){
+        $return $this->hasOne(Role::class);
+    }
+
+    public function buyers(){
+        return $this->hasMany(Buyer::class);
+    }
+
+    public function sellers(){
+        return $this->hasMany(Seller::class);
+    }
+
 }

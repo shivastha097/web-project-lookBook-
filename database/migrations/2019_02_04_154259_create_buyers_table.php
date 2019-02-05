@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRoomsTable extends Migration
+class CreateBuyersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,18 @@ class CreateRoomsTable extends Migration
      */
     public function up()
     {
-        Schema::create('rooms', function (Blueprint $table) {
+        Schema::create('buyers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('seller_id');
-            $table->string('category_id');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('bookmark_id')->nullable();
             $table->string('name');
             $table->string('slug');
-            $table->string('featured_image')->default('default-room.png');
-            $table->integer('price')->nullable();
+            $table->string('avatar')->default('avatar.png');
             $table->string('address')->nullable();
-            $table->boolean('status')->default(0);
+            $table->string('contact_no')->nullable();
+            $table->string('facebook_url')->nullable();
+            $table->string('twitter_url')->nullable();
+            $table->string('linkedin_url')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
         });
@@ -35,6 +37,6 @@ class CreateRoomsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rooms');
+        Schema::dropIfExists('buyers');
     }
 }
